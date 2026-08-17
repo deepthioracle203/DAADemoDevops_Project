@@ -1,0 +1,23 @@
+version: 0.1
+component: build
+
+steps:
+  - type: Command
+    name: "Terraform Format"
+    command: terraform fmt -check
+
+  - type: Command
+    name: "Terraform Init"
+    command: terraform init
+
+  - type: Command
+    name: "Terraform Validate"
+    command: terraform validate
+
+  - type: Command
+    name: "Terraform Plan"
+    command: terraform plan -out=tfplan
+
+  - type: Command
+    name: "Terraform Apply"
+    command: terraform apply -auto-approve tfplan
